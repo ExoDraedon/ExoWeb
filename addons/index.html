@@ -567,7 +567,7 @@
                     <!-- Addon 1: Blazium Counter -->
                     <div class="addon-card" data-addon="blazium-counter">
                         <div class="addon-image">
-                            <img src="https://via.placeholder.com/400x200?text=Blazium+Counter" alt="Blazium Counter">
+                            <img src="counter.png" alt="Blazium Counter">
                         </div>
                         <div class="addon-content">
                             <h3 class="addon-title">Blazium Counter</h3>
@@ -579,7 +579,7 @@
                     <!-- Addon 2: Ruleta Desafío 3 -->
                     <div class="addon-card" data-addon="ruleta-desafio-3">
                         <div class="addon-image">
-                            <img src="https://via.placeholder.com/400x200?text=Ruleta+Desafio+3" alt="Ruleta Desafío 3">
+                            <img src="ruleta.png" alt="Ruleta Desafío 3">
                         </div>
                         <div class="addon-content">
                             <h3 class="addon-title">Ruleta Desafío 3</h3>
@@ -591,7 +591,7 @@
                     <!-- Addon 3: Muerte Squid Craft Games 2 -->
                     <div class="addon-card" data-addon="muerte-squid-craft">
                         <div class="addon-image">
-                            <img src="https://via.placeholder.com/400x200?text=Muerte+Squid+Craft+Games+2" alt="Muerte Squid Craft Games 2">
+                            <img src="game_over.png" alt="Muerte Squid Craft Games 2">
                         </div>
                         <div class="addon-content">
                             <h3 class="addon-title">Muerte Squid Craft Games 2</h3>
@@ -616,7 +616,7 @@
             
             <div class="modal-body">
                 <div class="modal-image">
-                    <img id="modal-image" src="https://via.placeholder.com/600x300?text=Blazium+Counter" alt="Addon Image">
+                    <img id="modal-image" src="counter.png" alt="Addon Image">
                 </div>
                 
                 <div class="modal-info">
@@ -644,10 +644,10 @@
             <div class="download-section">
                 <h3>Descargar Addon</h3>
                 <div class="download-options">
-                    <a href="#" class="download-btn">
+                    <a href="#" class="download-btn" id="download-link">
                         <i class="fas fa-download"></i> Descargar para MCBE 1.20+
                     </a>
-                    <a href="#" class="download-btn">
+                    <a href="#" class="download-btn" id="instructions-link">
                         <i class="fas fa-file-pdf"></i> Instrucciones PDF
                     </a>
                 </div>
@@ -710,7 +710,7 @@
     </footer>
 
     <script>
-        // Datos de los addons
+        // Datos de los addons con rutas de descarga
         const addonsData = {
             "blazium-counter": {
                 title: "Blazium Counter",
@@ -724,7 +724,9 @@
                     "Efectos visuales y sonoros personalizables",
                     "Fácil instalación y configuración"
                 ],
-                image: "https://via.placeholder.com/600x300?text=Blazium+Counter"
+                image: "counter.png",
+                download: "blazium_counter.mcpack",
+                instructions: "instrucciones_counter.pdf"
             },
             "ruleta-desafio-3": {
                 title: "Ruleta Desafío 3",
@@ -738,7 +740,9 @@
                     "Desafíos preconfigurados incluidos",
                     "Fácil integración con otros addons"
                 ],
-                image: "https://via.placeholder.com/600x300?text=Ruleta+Desafio+3"
+                image: "ruleta.png",
+                download: "ruleta_desafio_3.mcpack",
+                instructions: "instrucciones_ruleta.pdf"
             },
             "muerte-squid-craft": {
                 title: "Muerte Squid Craft Games 2",
@@ -752,15 +756,19 @@
                     "Compatible con servidores y mundos individuales",
                     "Fácil activación/desactivación"
                 ],
-                image: "https://via.placeholder.com/600x300?text=Muerte+Squid+Craft+Games+2"
+                image: "game_over.png",
+                download: "muerte_squid_craft.mcpack",
+                instructions: "instrucciones_muerte.pdf"
             }
         };
 
-        // Funcionalidad de los modales
+        // Funcionalidad de los modales y descargas
         document.addEventListener('DOMContentLoaded', function() {
             const modal = document.getElementById('addon-modal');
             const closeBtn = document.querySelector('.close-modal');
             const addonCards = document.querySelectorAll('.addon-card');
+            const downloadLink = document.getElementById('download-link');
+            const instructionsLink = document.getElementById('instructions-link');
             
             // Abrir modal al hacer clic en una tarjeta
             addonCards.forEach(card => {
@@ -783,6 +791,13 @@
                             featuresList.appendChild(li);
                         });
                         
+                        // Actualizar enlaces de descarga
+                        downloadLink.href = addonData.download;
+                        downloadLink.download = addonData.download;
+                        
+                        instructionsLink.href = addonData.instructions;
+                        instructionsLink.download = addonData.instructions;
+                        
                         modal.style.display = 'block';
                         document.body.style.overflow = 'hidden';
                     }
@@ -801,6 +816,20 @@
                     modal.style.display = 'none';
                     document.body.style.overflow = 'auto';
                 }
+            });
+            
+            // Simular descarga (en un entorno real, estos serían archivos reales)
+            downloadLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                const fileName = this.download;
+                alert(`Descargando: ${fileName}\n\nEn un entorno real, el archivo comenzaría a descargarse automáticamente.`);
+                // En producción, el atributo href apuntaría al archivo real
+            });
+            
+            instructionsLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                const fileName = this.download;
+                alert(`Descargando instrucciones: ${fileName}\n\nEn un entorno real, el PDF comenzaría a descargarse automáticamente.`);
             });
         });
     </script>
