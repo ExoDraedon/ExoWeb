@@ -47,19 +47,13 @@
             padding: 0 20px;
         }
 
-        /* Header con efecto especial */
+        /* Header minimalista */
         .main-header {
-            background-color: transparent;
+            background-color: rgba(13, 21, 36, 0.95);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            padding: 30px 0;
-            transition: var(--transition);
-        }
-
-        .main-header.scrolled {
-            background-color: rgba(13, 21, 36, 0.95);
             padding: 15px 0;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
         }
@@ -81,14 +75,12 @@
             font-weight: 700;
             font-family: 'Montserrat', sans-serif;
             letter-spacing: 1px;
-            position: relative;
         }
 
         .logo h1 span {
             color: var(--accent-blue);
         }
 
-        /* Menú con efecto hover animado */
         .main-nav ul {
             display: flex;
             list-style: none;
@@ -102,130 +94,319 @@
             font-size: 1.1rem;
             font-family: 'Montserrat', sans-serif;
             position: relative;
-            display: flex;
-            flex-direction: column;
-            height: 40px;
-            overflow: hidden;
+            padding: 5px 0;
         }
 
-        .main-nav a span {
-            display: inline-block;
-            transition: transform 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-blue);
+            transition: var(--transition);
         }
 
-        .main-nav a span:first-child {
-            transform: translateY(0);
+        .main-nav a:hover::after,
+        .main-nav a.active::after {
+            width: 100%;
         }
 
-        .main-nav a span:last-child {
-            transform: translateY(40px);
+        .main-nav a.active {
             color: var(--accent-blue);
         }
 
-        .main-nav a:hover span:first-child {
-            transform: translateY(-40px);
+        /* Main Content */
+        .addons-section {
+            padding: 150px 0 100px;
         }
 
-        .main-nav a:hover span:last-child {
-            transform: translateY(0);
-        }
-
-        .main-nav a.active span:first-child {
-            transform: translateY(-40px);
-        }
-
-        .main-nav a.active span:last-child {
-            transform: translateY(0);
-            color: var(--accent-blue);
-        }
-
-        /* Hero Section para Addons */
-        .addons-hero {
-            padding: 180px 0 100px;
+        .section-header {
             text-align: center;
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            margin-bottom: 60px;
         }
 
-        .hero-content {
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 15px;
             position: relative;
-            z-index: 2;
-            max-width: 800px;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent-blue);
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            max-width: 700px;
             margin: 0 auto;
         }
 
-        .coming-soon {
-            font-size: 7rem;
-            font-weight: 800;
-            font-family: 'Montserrat', sans-serif;
-            color: transparent;
-            -webkit-text-stroke: 2px var(--accent-blue);
-            text-transform: uppercase;
-            letter-spacing: 8px;
-            margin-bottom: 40px;
-            position: relative;
-            animation: glitch 2s infinite;
+        .addons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px;
         }
 
-        @keyframes glitch {
-            0% {
-                text-shadow: none;
-            }
-            25% {
-                text-shadow: -3px -3px 0 rgba(255, 0, 0, 0.5), 3px 3px 0 rgba(0, 255, 255, 0.5);
-            }
-            50% {
-                text-shadow: 3px 3px 0 rgba(255, 0, 0, 0.5), -3px -3px 0 rgba(0, 255, 255, 0.5);
-            }
-            75% {
-                text-shadow: -3px 3px 0 rgba(255, 0, 0, 0.5), 3px -3px 0 rgba(0, 255, 255, 0.5);
-            }
-            100% {
-                text-shadow: none;
-            }
+        .addon-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid var(--border-glow);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
         }
 
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: var(--text-gray);
-            margin-bottom: 50px;
-            font-weight: 400;
-            letter-spacing: 2px;
+        .addon-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(79, 195, 247, 0.2);
         }
 
-        .countdown {
+        .addon-image {
+            width: 100%;
+            height: 200px;
+            background-color: #0a1428;
             display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 50px;
-        }
-
-        .countdown-item {
-            display: flex;
-            flex-direction: column;
             align-items: center;
+            justify-content: center;
+            overflow: hidden;
         }
 
-        .countdown-number {
-            font-size: 3rem;
-            font-weight: 700;
+        .addon-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .addon-card:hover .addon-image img {
+            transform: scale(1.05);
+        }
+
+        .addon-content {
+            padding: 25px;
+        }
+
+        .addon-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
             font-family: 'Montserrat', sans-serif;
+        }
+
+        .addon-description {
+            color: var(--text-gray);
+            margin-bottom: 20px;
+            height: 60px;
+            overflow: hidden;
+        }
+
+        .addon-link {
+            display: inline-block;
+            padding: 12px 25px;
+            background: var(--accent-blue);
+            color: var(--primary-dark);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            transition: var(--transition);
+        }
+
+        .addon-link:hover {
+            background: var(--text-light);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(79, 195, 247, 0.4);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 50px 0;
+        }
+
+        .modal-content {
+            background: var(--primary-dark);
+            border-radius: 15px;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+            position: relative;
+            border: 1px solid var(--border-glow);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
             color: var(--accent-blue);
-            min-width: 80px;
+            transform: rotate(90deg);
+        }
+
+        .modal-header {
+            margin-bottom: 30px;
             text-align: center;
         }
 
-        .countdown-label {
-            font-size: 0.9rem;
-            color: var(--text-gray);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .modal-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--accent-blue);
         }
 
-        /* Footer minimalista */
+        .modal-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+        }
+
+        .modal-body {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .modal-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 300px;
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-info {
+            flex: 1;
+        }
+
+        .modal-description {
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .features-list {
+            margin-bottom: 30px;
+        }
+
+        .features-list h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--accent-blue);
+        }
+
+        .features-list ul {
+            list-style: none;
+        }
+
+        .features-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .features-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+        }
+
+        .download-section {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .download-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .download-options {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 25px;
+            background: var(--accent-blue);
+            color: var(--primary-dark);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            transition: var(--transition);
+        }
+
+        .download-btn:hover {
+            background: var(--text-light);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(79, 195, 247, 0.4);
+        }
+
+        .download-btn i {
+            margin-right: 8px;
+        }
+
+        .instructions h4 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .instructions ol {
+            padding-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 10px;
+            color: var(--text-gray);
+        }
+
+        /* Footer */
         .main-footer {
             background-color: rgba(10, 15, 25, 0.9);
             padding: 60px 0 30px;
@@ -301,10 +482,14 @@
             font-size: 0.95rem;
         }
 
-        /* Responsive Design */
+        /* Responsive */
         @media (max-width: 992px) {
-            .coming-soon {
-                font-size: 5rem;
+            .modal-body {
+                flex-direction: column;
+            }
+            
+            .modal-image {
+                height: 250px;
             }
         }
 
@@ -312,38 +497,40 @@
             .main-nav ul {
                 gap: 15px;
             }
-            
-            .coming-soon {
-                font-size: 3.5rem;
-                letter-spacing: 4px;
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+            }
+
+            .addons-grid {
+                grid-template-columns: 1fr;
             }
             
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .countdown {
-                flex-wrap: wrap;
+            .download-options {
+                flex-direction: column;
             }
         }
 
         @media (max-width: 480px) {
-            .coming-soon {
-                font-size: 2.5rem;
-                letter-spacing: 2px;
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .main-nav ul {
+                gap: 10px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
             }
             
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
-            .logo h1 {
-                font-size: 1.5rem;
-            }
-            
-            .main-nav a {
-                font-size: 0.9rem;
+            .modal-content {
+                padding: 20px;
             }
         }
     </style>
@@ -353,48 +540,131 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <h1>Blazium<span>Club</span></h1>
+                    <a href="../index.html"><h1>Blazium<span>Club</span></h1></a>
                 </div>
                 <nav class="main-nav">
                     <ul>
-                        <li><a href="../index.html"><span>Inicio</span><span>Inicio</span></a></li>
-                        <li><a href="#" class="active"><span>Addons</span><span>Addons</span></a></li>
-                        <li><a href="../mapas/index.html"><span>Mapas</span><span>Mapas</span></a></li>
-                        <li><a href="../eventos/index.html"><span>Eventos</span><span>Eventos</span></a></li>
-                        <li><a href="../comisiones/index.html"><span>Comisiones</span><span>Comisiones</span></a></li>
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="#" class="active">Addons</a></li>
+                        <li><a href="../mapas/index.html">Mapas</a></li>
+                        <li><a href="../eventos/index.html">Eventos</a></li>
+                        <li><a href="../comisiones/index.html">Comisiones</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
     </header>
 
-    <section class="addons-hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="coming-soon">Próximamente</div>
-                <div class="hero-subtitle">Estamos preparando algo increíble para ti</div>
-                
-                <div class="countdown">
-                    <div class="countdown-item">
-                        <div class="countdown-number" id="days">00</div>
-                        <div class="countdown-label">Días</div>
+    <main>
+        <section class="addons-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Nuestros Addons</h2>
+                    <p class="section-subtitle">Descarga addons exclusivos para transformar tu experiencia en Minecraft Bedrock</p>
+                </div>
+
+                <div class="addons-grid">
+                    <!-- Addon 1: Blazium Counter -->
+                    <div class="addon-card" data-addon="blazium-counter">
+                        <div class="addon-image">
+                            <img src="https://via.placeholder.com/400x200?text=Blazium+Counter" alt="Blazium Counter">
+                        </div>
+                        <div class="addon-content">
+                            <h3 class="addon-title">Blazium Counter</h3>
+                            <p class="addon-description">Un contador personalizable para tus eventos y juegos en Minecraft. Perfecto para torneos y competiciones.</p>
+                            <div class="addon-link">Ver Detalles</div>
+                        </div>
                     </div>
-                    <div class="countdown-item">
-                        <div class="countdown-number" id="hours">00</div>
-                        <div class="countdown-label">Horas</div>
+
+                    <!-- Addon 2: Ruleta Desafío 3 -->
+                    <div class="addon-card" data-addon="ruleta-desafio-3">
+                        <div class="addon-image">
+                            <img src="https://via.placeholder.com/400x200?text=Ruleta+Desafio+3" alt="Ruleta Desafío 3">
+                        </div>
+                        <div class="addon-content">
+                            <h3 class="addon-title">Ruleta Desafío 3</h3>
+                            <p class="addon-description">La tercera versión de nuestra popular ruleta de desafíos. ¡Nuevos desafíos y mejoras de rendimiento!</p>
+                            <div class="addon-link">Ver Detalles</div>
+                        </div>
                     </div>
-                    <div class="countdown-item">
-                        <div class="countdown-number" id="minutes">00</div>
-                        <div class="countdown-label">Minutos</div>
-                    </div>
-                    <div class="countdown-item">
-                        <div class="countdown-number" id="seconds">00</div>
-                        <div class="countdown-label">Segundos</div>
+
+                    <!-- Addon 3: Muerte Squid Craft Games 2 -->
+                    <div class="addon-card" data-addon="muerte-squid-craft">
+                        <div class="addon-image">
+                            <img src="https://via.placeholder.com/400x200?text=Muerte+Squid+Craft+Games+2" alt="Muerte Squid Craft Games 2">
+                        </div>
+                        <div class="addon-content">
+                            <h3 class="addon-title">Muerte Squid Craft Games 2</h3>
+                            <p class="addon-description">Sistema de muerte personalizado inspirado en los Squid Games. Ideal para eventos y minijuegos.</p>
+                            <div class="addon-link">Ver Detalles</div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
+    </main>
+
+    <!-- Modal para mostrar detalles del addon -->
+    <div id="addon-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            
+            <div class="modal-header">
+                <h2 id="modal-title" class="modal-title">Blazium Counter</h2>
+                <p id="modal-subtitle" class="modal-subtitle">Contador personalizable para eventos</p>
+            </div>
+            
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modal-image" src="https://via.placeholder.com/600x300?text=Blazium+Counter" alt="Addon Image">
+                </div>
+                
+                <div class="modal-info">
+                    <p id="modal-description" class="modal-description">
+                        El Blazium Counter es un addon esencial para cualquier evento o competición en Minecraft Bedrock. 
+                        Ofrece un sistema de conteo personalizable que puede adaptarse a cualquier situación, desde torneos 
+                        PvP hasta carreras de velocidad. Con una interfaz intuitiva y opciones de configuración avanzadas, 
+                        este addon te permite mantener un seguimiento preciso de puntos, vidas, tiempo y más.
+                    </p>
+                    
+                    <div class="features-list">
+                        <h3>Características Principales</h3>
+                        <ul id="modal-features">
+                            <li>Sistema de conteo personalizable (puntos, vidas, tiempo, etc.)</li>
+                            <li>Interfaz intuitiva y fácil de usar</li>
+                            <li>Compatible con múltiples jugadores simultáneamente</li>
+                            <li>Configuración avanzada para eventos complejos</li>
+                            <li>Efectos visuales y sonoros personalizables</li>
+                            <li>Fácil instalación y configuración</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="download-section">
+                <h3>Descargar Addon</h3>
+                <div class="download-options">
+                    <a href="#" class="download-btn">
+                        <i class="fas fa-download"></i> Descargar para MCBE 1.20+
+                    </a>
+                    <a href="#" class="download-btn">
+                        <i class="fas fa-file-pdf"></i> Instrucciones PDF
+                    </a>
+                </div>
+                
+                <div class="instructions">
+                    <h4>Instrucciones de Instalación:</h4>
+                    <ol>
+                        <li>Descarga el archivo .mcpack</li>
+                        <li>Abre Minecraft Bedrock Edition</li>
+                        <li>Ve a Configuración > Recursos > Packs de comportamiento</li>
+                        <li>Activa el addon desde tus paquetes disponibles</li>
+                        <li>¡Disfruta del addon en tu mundo!</li>
+                    </ol>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
 
     <footer class="main-footer">
         <div class="container">
@@ -440,45 +710,98 @@
     </footer>
 
     <script>
+        // Datos de los addons
+        const addonsData = {
+            "blazium-counter": {
+                title: "Blazium Counter",
+                subtitle: "Contador personalizable para eventos",
+                description: "El Blazium Counter es un addon esencial para cualquier evento o competición en Minecraft Bedrock. Ofrece un sistema de conteo personalizable que puede adaptarse a cualquier situación, desde torneos PvP hasta carreras de velocidad. Con una interfaz intuitiva y opciones de configuración avanzadas, este addon te permite mantener un seguimiento preciso de puntos, vidas, tiempo y más.",
+                features: [
+                    "Sistema de conteo personalizable (puntos, vidas, tiempo, etc.)",
+                    "Interfaz intuitiva y fácil de usar",
+                    "Compatible con múltiples jugadores simultáneamente",
+                    "Configuración avanzada para eventos complejos",
+                    "Efectos visuales y sonoros personalizables",
+                    "Fácil instalación y configuración"
+                ],
+                image: "https://via.placeholder.com/600x300?text=Blazium+Counter"
+            },
+            "ruleta-desafio-3": {
+                title: "Ruleta Desafío 3",
+                subtitle: "La ruleta de desafíos definitiva",
+                description: "La tercera versión de nuestra popular ruleta de desafíos trae nuevas características y mejoras de rendimiento. Este addon te permite crear ruletas personalizadas con desafíos únicos para tus eventos de Minecraft. Con efectos visuales mejorados y un sistema de configuración más intuitivo, podrás diseñar experiencias únicas para tus jugadores.",
+                features: [
+                    "Ruleta personalizable con hasta 12 desafíos diferentes",
+                    "Efectos visuales mejorados",
+                    "Sistema de configuración intuitivo",
+                    "Compatible con todos los dispositivos Bedrock",
+                    "Desafíos preconfigurados incluidos",
+                    "Fácil integración con otros addons"
+                ],
+                image: "https://via.placeholder.com/600x300?text=Ruleta+Desafio+3"
+            },
+            "muerte-squid-craft": {
+                title: "Muerte Squid Craft Games 2",
+                subtitle: "Sistema de muerte inspirado en Squid Games",
+                description: "Inspirado en los populares Squid Games, este addon introduce un sistema de muerte personalizado que transforma la experiencia de juego en Minecraft Bedrock. Con efectos visuales dramáticos y sonidos impactantes, la muerte nunca fue tan espectacular. Ideal para eventos, minijuegos y torneos donde quieras añadir un toque dramático.",
+                features: [
+                    "Efectos visuales dramáticos al morir",
+                    "Sonidos personalizados impactantes",
+                    "Configuración de mensajes personalizados",
+                    "Sistema de partículas mejorado",
+                    "Compatible con servidores y mundos individuales",
+                    "Fácil activación/desactivación"
+                ],
+                image: "https://via.placeholder.com/600x300?text=Muerte+Squid+Craft+Games+2"
+            }
+        };
+
+        // Funcionalidad de los modales
         document.addEventListener('DOMContentLoaded', function() {
-            // Efecto de scroll para el header
-            window.addEventListener('scroll', () => {
-                const header = document.querySelector('.main-header');
-                if (window.scrollY > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
+            const modal = document.getElementById('addon-modal');
+            const closeBtn = document.querySelector('.close-modal');
+            const addonCards = document.querySelectorAll('.addon-card');
+            
+            // Abrir modal al hacer clic en una tarjeta
+            addonCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const addonId = this.getAttribute('data-addon');
+                    const addonData = addonsData[addonId];
+                    
+                    if (addonData) {
+                        document.getElementById('modal-title').textContent = addonData.title;
+                        document.getElementById('modal-subtitle').textContent = addonData.subtitle;
+                        document.getElementById('modal-description').textContent = addonData.description;
+                        document.getElementById('modal-image').src = addonData.image;
+                        
+                        // Actualizar características
+                        const featuresList = document.getElementById('modal-features');
+                        featuresList.innerHTML = '';
+                        addonData.features.forEach(feature => {
+                            const li = document.createElement('li');
+                            li.textContent = feature;
+                            featuresList.appendChild(li);
+                        });
+                        
+                        modal.style.display = 'block';
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
             });
             
-            // Contador regresivo
-            const countdownDate = new Date();
-            countdownDate.setDate(countdownDate.getDate() + 14);
+            // Cerrar modal
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
             
-            function updateCountdown() {
-                const now = new Date().getTime();
-                const distance = countdownDate - now;
-                
-                if (distance < 0) {
-                    countdownDate.setDate(countdownDate.getDate() + 14);
-                    return;
+            // Cerrar al hacer clic fuera del modal
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
                 }
-                
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                
-                document.getElementById('days').textContent = days.toString().padStart(2, '0');
-                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-            }
-            
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
-            
-            // Efecto hover para el menú (ya implementado en CSS)
+            });
         });
     </script>
 </body>
