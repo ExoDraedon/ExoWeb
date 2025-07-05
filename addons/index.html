@@ -183,6 +183,7 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            position: relative;
         }
 
         .addon-image img {
@@ -362,7 +363,8 @@
         }
 
         .download-options {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
             margin-bottom: 25px;
         }
@@ -371,7 +373,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 12px 25px;
+            padding: 12px 15px;
             background: var(--accent-blue);
             color: var(--primary-dark);
             text-decoration: none;
@@ -379,6 +381,7 @@
             font-weight: 600;
             font-family: 'Montserrat', sans-serif;
             transition: var(--transition);
+            text-align: center;
         }
 
         .download-btn:hover {
@@ -389,6 +392,15 @@
 
         .download-btn i {
             margin-right: 8px;
+        }
+
+        .tutorial-btn {
+            background: #ff0000;
+            color: white;
+        }
+
+        .tutorial-btn:hover {
+            background: #ff3333;
         }
 
         .instructions h4 {
@@ -509,10 +521,6 @@
             .addons-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .download-options {
-                flex-direction: column;
-            }
         }
 
         @media (max-width: 480px) {
@@ -531,6 +539,10 @@
             
             .modal-content {
                 padding: 20px;
+            }
+            
+            .download-options {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -567,7 +579,10 @@
                     <!-- Addon 1: Blazium Counter -->
                     <div class="addon-card" data-addon="blazium-counter">
                         <div class="addon-image">
-                            <img src="counter.png" alt="Blazium Counter">
+                            <div style="width:100%;height:100%;background:linear-gradient(135deg, #1a4b8c, #4fc3f7);display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;text-align:center;padding:20px;">
+                                <i class="fas fa-sort-numeric-down" style="font-size:3rem;margin-bottom:15px;"></i>
+                                <h3 style="position:absolute;bottom:10px;width:100%;text-align:center;font-weight:bold;">Blazium Counter</h3>
+                            </div>
                         </div>
                         <div class="addon-content">
                             <h3 class="addon-title">Blazium Counter</h3>
@@ -579,11 +594,14 @@
                     <!-- Addon 2: Ruleta Desafío 3 -->
                     <div class="addon-card" data-addon="ruleta-desafio-3">
                         <div class="addon-image">
-                            <img src="ruleta.png" alt="Ruleta Desafío 3">
+                            <div style="width:100%;height:100%;background:linear-gradient(135deg, #8e44ad, #e74c3c);display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;text-align:center;padding:20px;">
+                                <i class="fas fa-dice" style="font-size:3rem;margin-bottom:15px;"></i>
+                                <h3 style="position:absolute;bottom:10px;width:100%;text-align:center;font-weight:bold;">Ruleta Desafío 3</h3>
+                            </div>
                         </div>
                         <div class="addon-content">
                             <h3 class="addon-title">Ruleta Desafío 3</h3>
-                            <p class="addon-description">La tercera versión de la popular ruleta de dedsafio. ¡Nuevas mejoras de rendimiento!</p>
+                            <p class="addon-description">La tercera versión de nuestra popular ruleta de desafíos. ¡Nuevos desafíos y mejoras de rendimiento!</p>
                             <div class="addon-link">Ver Detalles</div>
                         </div>
                     </div>
@@ -591,11 +609,14 @@
                     <!-- Addon 3: Muerte Squid Craft Games 2 -->
                     <div class="addon-card" data-addon="muerte-squid-craft">
                         <div class="addon-image">
-                            <img src="game_over.png" alt="Muerte Squid Craft Games 2">
+                            <div style="width:100%;height:100%;background:linear-gradient(135deg, #c0392b, #f39c12);display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;text-align:center;padding:20px;">
+                                <i class="fas fa-skull" style="font-size:3rem;margin-bottom:15px;"></i>
+                                <h3 style="position:absolute;bottom:10px;width:100%;text-align:center;font-weight:bold;">Muerte Squid Craft</h3>
+                            </div>
                         </div>
                         <div class="addon-content">
                             <h3 class="addon-title">Muerte Squid Craft Games 2</h3>
-                            <p class="addon-description">Sistema de muerte inspirado en la animacion de muerte del sqg3.</p>
+                            <p class="addon-description">Sistema de muerte personalizado inspirado en los Squid Games. Ideal para eventos y minijuegos.</p>
                             <div class="addon-link">Ver Detalles</div>
                         </div>
                     </div>
@@ -611,29 +632,31 @@
             
             <div class="modal-header">
                 <h2 id="modal-title" class="modal-title">Blazium Counter</h2>
-                <p id="modal-subtitle" class="modal-subtitle">Contador personalizable para eventos /scritpevent menu:timer para usar</p>
+                <p id="modal-subtitle" class="modal-subtitle">Contador personalizable para eventos</p>
             </div>
             
             <div class="modal-body">
                 <div class="modal-image">
-                    <img id="modal-image" src="counter.png" alt="Addon Image">
+                    <div id="modal-image" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, #1a4b8c, #4fc3f7);">
+                        <i class="fas fa-sort-numeric-down" style="font-size:5rem;color:white;"></i>
+                    </div>
                 </div>
                 
                 <div class="modal-info">
                     <p id="modal-description" class="modal-description">
-                        El Blazium Counter es un addon esencial para cualquier evento en Minecraft Bedrock. 
+                        El Blazium Counter es un addon esencial para cualquier evento o competición en Minecraft Bedrock. 
                         Ofrece un sistema de conteo personalizable que puede adaptarse a cualquier situación, desde torneos 
                         PvP hasta carreras de velocidad. Con una interfaz intuitiva y opciones de configuración avanzadas, 
-                        este addon te permite mantener un seguimiento de tiempo exacto.
+                        este addon te permite mantener un seguimiento preciso de puntos, vidas, tiempo y más.
                     </p>
                     
                     <div class="features-list">
                         <h3>Características Principales</h3>
                         <ul id="modal-features">
-                            <li>Sistema de conteo personalizable </li>
+                            <li>Sistema de conteo personalizable (puntos, vidas, tiempo, etc.)</li>
                             <li>Interfaz intuitiva y fácil de usar</li>
                             <li>Compatible con múltiples jugadores simultáneamente</li>
-                            <li>Configuración simple /scriptevent menu:timer </li>
+                            <li>Configuración avanzada para eventos complejos</li>
                             <li>Efectos visuales y sonoros personalizables</li>
                             <li>Fácil instalación y configuración</li>
                         </ul>
@@ -644,21 +667,24 @@
             <div class="download-section">
                 <h3>Descargar Addon</h3>
                 <div class="download-options">
-                    <a href="#" class="download-btn" id="download-link">
-                        <i class="fas fa-download"></i> Descargar para MCBE 1.20+
+                    <a href="#" class="download-btn" id="download-mcaddon">
+                        <i class="fas fa-download"></i> Descargar .mcaddon
                     </a>
-                    <a href="#" class="download-btn" id="instructions-link">
-                        <i class="fas fa-file-pdf"></i> Instrucciones PDF
+                    <a href="#" class="download-btn" id="download-zip">
+                        <i class="fas fa-file-archive"></i> Descargar .zip (Manual)
+                    </a>
+                    <a href="#" class="download-btn tutorial-btn" id="tutorial-link" target="_blank">
+                        <i class="fab fa-youtube"></i> Ver Tutorial
                     </a>
                 </div>
                 
                 <div class="instructions">
                     <h4>Instrucciones de Instalación:</h4>
                     <ol>
-                        <li>Descarga el archivo .mcaddon</li>
-                        <li>Abre Minecraft Bedrock Edition</li>
-                        <li>Ve a Configuración > Recursos > Packs de comportamiento</li>
-                        <li>Activa el addon desde tus paquetes disponibles</li>
+                        <li>Descarga el archivo .mcaddon (instalación automática) o .zip (instalación manual)</li>
+                        <li>Para .mcaddon: Haz clic en el archivo y sigue las instrucciones de Minecraft</li>
+                        <li>Para .zip: Extrae el contenido en la carpeta de behavior_packs de tu mundo</li>
+                        <li>Abre Minecraft Bedrock Edition y activa el addon en la configuración del mundo</li>
                         <li>¡Disfruta del addon en tu mundo!</li>
                     </ol>
                 </div>
@@ -710,7 +736,7 @@
     </footer>
 
     <script>
-        // Datos de los addons con rutas de descarga
+        // Datos de los addons con rutas de descarga y tutoriales
         const addonsData = {
             "blazium-counter": {
                 title: "Blazium Counter",
@@ -724,9 +750,11 @@
                     "Efectos visuales y sonoros personalizables",
                     "Fácil instalación y configuración"
                 ],
-                image: "counter.png",
-                download: "blazium_counter.mcpack",
-                instructions: "instrucciones_counter.pdf"
+                mcaddon: "blazium_counter.mcaddon",
+                zip: "blazium_counter.zip",
+                tutorial: "https://www.youtube.com/watch?v=nVPPl3YStvI",
+                color: "linear-gradient(135deg, #1a4b8c, #4fc3f7)",
+                icon: "fas fa-sort-numeric-down"
             },
             "ruleta-desafio-3": {
                 title: "Ruleta Desafío 3",
@@ -740,9 +768,11 @@
                     "Desafíos preconfigurados incluidos",
                     "Fácil integración con otros addons"
                 ],
-                image: "ruleta.png",
-                download: "ruleta_desafio_3.mcpack",
-                instructions: "instrucciones_ruleta.pdf"
+                mcaddon: "ruleta_desafio_3.mcaddon",
+                zip: "ruleta_desafio_3.zip",
+                tutorial: "https://youtu.be/W7PjF6GfVmc?si=1PYvnK6vynXdVqM4",
+                color: "linear-gradient(135deg, #8e44ad, #e74c3c)",
+                icon: "fas fa-dice"
             },
             "muerte-squid-craft": {
                 title: "Muerte Squid Craft Games 2",
@@ -756,9 +786,11 @@
                     "Compatible con servidores y mundos individuales",
                     "Fácil activación/desactivación"
                 ],
-                image: "game_over.png",
-                download: "muerte_squid_craft.mcpack",
-                instructions: "instrucciones_muerte.pdf"
+                mcaddon: "muerte_squid_craft.mcaddon",
+                zip: "muerte_squid_craft.zip",
+                tutorial: "https://youtu.be/qt_v4JitJBk?si=cX_Fntdw1umT4Yo8",
+                color: "linear-gradient(135deg, #c0392b, #f39c12)",
+                icon: "fas fa-skull"
             }
         };
 
@@ -767,8 +799,9 @@
             const modal = document.getElementById('addon-modal');
             const closeBtn = document.querySelector('.close-modal');
             const addonCards = document.querySelectorAll('.addon-card');
-            const downloadLink = document.getElementById('download-link');
-            const instructionsLink = document.getElementById('instructions-link');
+            const downloadMcaddon = document.getElementById('download-mcaddon');
+            const downloadZip = document.getElementById('download-zip');
+            const tutorialLink = document.getElementById('tutorial-link');
             
             // Abrir modal al hacer clic en una tarjeta
             addonCards.forEach(card => {
@@ -780,7 +813,10 @@
                         document.getElementById('modal-title').textContent = addonData.title;
                         document.getElementById('modal-subtitle').textContent = addonData.subtitle;
                         document.getElementById('modal-description').textContent = addonData.description;
-                        document.getElementById('modal-image').src = addonData.image;
+                        
+                        // Actualizar imagen del modal
+                        const modalImage = document.querySelector('.modal-image');
+                        modalImage.innerHTML = `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:${addonData.color};"><i class="${addonData.icon}" style="font-size:5rem;color:white;"></i></div>`;
                         
                         // Actualizar características
                         const featuresList = document.getElementById('modal-features');
@@ -792,11 +828,13 @@
                         });
                         
                         // Actualizar enlaces de descarga
-                        downloadLink.href = addonData.download;
-                        downloadLink.download = addonData.download;
+                        downloadMcaddon.href = addonData.mcaddon;
+                        downloadMcaddon.download = addonData.mcaddon;
                         
-                        instructionsLink.href = addonData.instructions;
-                        instructionsLink.download = addonData.instructions;
+                        downloadZip.href = addonData.zip;
+                        downloadZip.download = addonData.zip;
+                        
+                        tutorialLink.href = addonData.tutorial;
                         
                         modal.style.display = 'block';
                         document.body.style.overflow = 'hidden';
@@ -819,17 +857,16 @@
             });
             
             // Simular descarga (en un entorno real, estos serían archivos reales)
-            downloadLink.addEventListener('click', function(e) {
+            downloadMcaddon.addEventListener('click', function(e) {
                 e.preventDefault();
                 const fileName = this.download;
-                alert(`Descargando: ${fileName}\n\nEn un entorno real, el archivo comenzaría a descargarse automáticamente.`);
-                // En producción, el atributo href apuntaría al archivo real
+                alert(`Descargando: ${fileName}\n\nEn un entorno real, el archivo .mcaddon comenzaría a descargarse automáticamente.`);
             });
             
-            instructionsLink.addEventListener('click', function(e) {
+            downloadZip.addEventListener('click', function(e) {
                 e.preventDefault();
                 const fileName = this.download;
-                alert(`Descargando instrucciones: ${fileName}\n\nEn un entorno real, el PDF comenzaría a descargarse automáticamente.`);
+                alert(`Descargando: ${fileName}\n\nEn un entorno real, el archivo .zip comenzaría a descargarse automáticamente.`);
             });
         });
     </script>
