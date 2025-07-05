@@ -780,7 +780,7 @@
             }
         };
 
-        // Funcionalidad de los modales y descargas
+        // Funcionalidad de los modales
         document.addEventListener('DOMContentLoaded', function() {
             const modal = document.getElementById('addon-modal');
             const closeBtn = document.querySelector('.close-modal');
@@ -837,19 +837,6 @@
                     modal.style.display = 'none';
                     document.body.style.overflow = 'auto';
                 }
-            });
-            
-            // Simular descarga (en un entorno real, estos serían archivos reales)
-            downloadMcaddon.addEventListener('click', function(e) {
-                e.preventDefault();
-                const fileName = this.download;
-                alert(`Descargando: ${fileName}\n\nEn un entorno real, el archivo .mcaddon comenzaría a descargarse automáticamente.`);
-            });
-            
-            downloadZip.addEventListener('click', function(e) {
-                e.preventDefault();
-                const fileName = this.download;
-                alert(`Descargando: ${fileName}\n\nEn un entorno real, el archivo .zip comenzaría a descargarse automáticamente.`);
             });
         });
     </script>
