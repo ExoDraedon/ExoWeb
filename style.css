@@ -4,6 +4,7 @@
   --font-main: 'Helvetica Neue', sans-serif;
 }
 
+/* Reset básico */
 * {
   margin: 0;
   padding: 0;
@@ -11,78 +12,72 @@
 }
 
 body {
-  font-family: var(--font-main);
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  line-height: 1.6;
-  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom, #0f0f0f, #1c1c1c);
+  color: #e0e0e0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
+/* Barra superior (navegación) */
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 4rem;
+  background-color: #0a1f33;
+  padding: 1em 2em;
+  border-bottom: 2px solid #1a3a5f;
 }
 
 nav ul {
-  display: flex;
   list-style: none;
-  gap: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 2em;
 }
 
 nav a {
+  color: #e0e0e0;
   text-decoration: none;
-  color: var(--color-text);
   font-weight: bold;
-  position: relative;
+  transition: color 0.3s;
 }
 
-nav a::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 0;
-  height: 2px;
-  background: var(--color-text);
-  transition: width 0.3s ease;
+nav a:hover {
+  color: #66ccff;
 }
 
-nav a:hover::after {
-  width: 100%;
-}
-
-.hero {
+/* Contenido principal */
+main {
+  flex: 1;
   text-align: center;
-  margin-bottom: 6rem;
+  padding: 5em 2em;
+  background: linear-gradient(to bottom, #1c1c1c, #0f0f0f);
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-bottom: 6rem;
+main h1 {
+  font-size: 3em;
+  color: #ffffff;
+  margin-bottom: 1em;
 }
 
-.proyecto img {
-  width: 100%;
-  border-radius: 8px;
-  transition: transform 0.3s ease;
+main p {
+  font-size: 1.2em;
+  color: #cccccc;
 }
 
-.proyecto:hover img {
-  transform: scale(1.03);
-}
-
-#nosotros,
-#contacto {
-  margin-bottom: 4rem;
-}
-
+/* Barra inferior (footer / contacto) */
 footer {
+  background-color: #0a1f33;
+  color: #cccccc;
   text-align: center;
-  font-size: 0.9rem;
-  color: #999;
-  margin-top: 4rem;
+  padding: 1em;
+  border-top: 2px solid #1a3a5f;
+}
+
+footer a {
+  color: #66ccff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
 }
