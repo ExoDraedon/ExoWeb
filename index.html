@@ -4,19 +4,521 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blazium Club - Contenido exclusivo para Minecraft Bedrock</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #0a192f;
+            --primary-blue: #1a4b8c;
+            --accent-blue: #64ffda;
+            --accent-light: #8ae9ff;
+            --text-light: #e6f1ff;
+            --text-gray: #8892b0;
+            --bg-dark: #020c1b;
+            --card-bg: rgba(10, 25, 47, 0.7);
+            --border-glow: rgba(100, 255, 218, 0.3);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rubik', 'Segoe UI', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.7;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(26, 75, 140, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(100, 255, 218, 0.05) 0%, transparent 20%),
+                linear-gradient(135deg, #020c1b 0%, #0a192f 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header mejorado con efecto gamer */
+        .main-header {
+            background-color: rgba(10, 25, 47, 0.9);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid var(--border-glow);
+            backdrop-filter: blur(10px);
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo h1 {
+            color: var(--text-light);
+            font-size: 2rem;
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+        }
+
+        .logo h1::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-light));
+            border-radius: 2px;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .logo:hover h1::after {
+            transform: scaleX(1);
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .main-nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 0.8rem 1.2rem;
+            margin: 0 0.2rem;
+            font-weight: 500;
+            transition: var(--transition);
+            border-radius: 4px;
+            position: relative;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent-blue);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .main-nav a:hover {
+            color: var(--accent-blue);
+        }
+
+        .main-nav a:hover::after {
+            width: 70%;
+        }
+
+        .main-nav a.active {
+            color: var(--accent-blue);
+        }
+
+        .main-nav a.active::after {
+            width: 70%;
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--accent-blue);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section mejorada */
+        .hero {
+            padding: 180px 0 100px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(100, 255, 218, 0.1) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--accent-blue), var(--text-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-glow);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #64ffda, #1a4b8c, #64ffda);
+            z-index: -1;
+            border-radius: 15px;
+            animation: borderAnimation 3s linear infinite;
+        }
+
+        @keyframes borderAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 200% 50%;
+            }
+        }
+
+        .hero p {
+            color: var(--text-light);
+            font-size: 1.15rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .hero p:first-of-type {
+            margin-top: 20px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            border: 2px solid transparent;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-light));
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(100, 255, 218, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-blue);
+            border: 2px solid var(--accent-blue);
+        }
+
+        .btn-secondary::before {
+            background: var(--accent-blue);
+            transform: scaleX(0);
+            transform-origin: right;
+        }
+
+        .btn-secondary:hover {
+            color: var(--primary-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(100, 255, 218, 0.3);
+        }
+
+        .btn-secondary:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Footer mejorado */
+        .main-footer {
+            background-color: rgba(10, 25, 47, 0.9);
+            padding: 60px 0 20px;
+            margin-top: auto;
+            border-top: 1px solid var(--border-glow);
+            backdrop-filter: blur(10px);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: var(--accent-blue);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .footer-section p {
+            color: var(--text-gray);
+            max-width: 300px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .footer-section ul li:hover {
+            transform: translateX(5px);
+        }
+
+        .footer-section ul li i {
+            margin-right: 12px;
+            color: var(--accent-blue);
+            font-size: 1.2rem;
+            min-width: 25px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            color: var(--accent-blue);
+            font-size: 1.3rem;
+            transition: var(--transition);
+            border: 1px solid var(--border-glow);
+        }
+
+        .social-links a:hover {
+            background: var(--accent-blue);
+            color: var(--primary-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.3);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Animaciones y efectos */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                height: 100vh;
+                background-color: var(--primary-dark);
+                transition: all 0.5s ease;
+                z-index: 1000;
+                padding-top: 80px;
+                box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+            }
+
+            .main-nav.active {
+                left: 0;
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .main-nav a {
+                display: block;
+                padding: 15px;
+                margin: 8px 0;
+                text-align: center;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+
+            .hero {
+                padding: 150px 0 60px;
+            }
+
+            .hero h2 {
+                font-size: 2.4rem;
+            }
+
+            .hero-content {
+                padding: 30px 20px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .logo h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="main-header">
         <div class="container">
             <div class="logo">
-                <h1>Blazium<span>Club</span></h1>
+                <h1 class="floating">Blazium Club</h1>
             </div>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="#" class="active">Inicio</a></li>
                     <li><a href="addons/index.html">Addons</a></li>
                     <li><a href="mapas/index.html">Mapas</a></li>
                     <li><a href="eventos/index.html">Eventos</a></li>
@@ -36,11 +538,18 @@
         <section class="hero">
             <div class="container">
                 <h2>Bienvenido a Blazium Club</h2>
-                <p>Blazium Club es una comunidad y plataforma dedicada a la creación, distribución y encargo de contenido personalizado para Minecraft Bedrock. Nuestro objetivo es ofrecer una experiencia completa donde jugadores y creadores puedan acceder a addons únicos, mapas originales y participar en eventos masivos diseñados para entretener y desafiar. Nos especializamos en contenido premium que expande las posibilidades del juego, desde texturas HD hasta mecánicas de juego innovadoras.</p>
-                <p>En nuestro club, los creadores pueden monetizar su talento a través de nuestro sistema de comisiones, mientras que los jugadores disfrutan de contenido exclusivo. Organizamos torneos mensuales con premios, colaboraciones con creadores reconocidos y lanzamientos especiales. Todo nuestro contenido está optimizado para dispositivos móviles y consolas, garantizando compatibilidad y rendimiento.</p>
-                <div class="cta-buttons">
-                    <a href="addons/index.html" class="btn btn-primary">Explorar Addons</a>
-                    <a href="eventos/index.html" class="btn btn-secondary">Próximos Eventos</a>
+                <div class="hero-content">
+                    <p>Blazium Club es una comunidad y plataforma dedicada a la creación, distribución y encargo de contenido personalizado para Minecraft Bedrock. Nuestro objetivo es ofrecer una experiencia completa donde jugadores y creadores puedan acceder a addons únicos, mapas originales y participar en eventos masivos diseñados para entretener y desafiar.</p>
+                    <p>Nos especializamos en contenido premium que expande las posibilidades del juego, desde texturas HD hasta mecánicas de juego innovadoras. En nuestro club, los creadores pueden monetizar su talento a través de nuestro sistema de comisiones, mientras que los jugadores disfrutan de contenido exclusivo.</p>
+                    <p>Organizamos torneos mensuales con premios, colaboraciones con creadores reconocidos y lanzamientos especiales. Todo nuestro contenido está optimizado para dispositivos móviles y consolas, garantizando compatibilidad y rendimiento.</p>
+                    <div class="cta-buttons">
+                        <a href="addons/index.html" class="btn btn-primary">
+                            <i class="fas fa-download"></i> Explorar Addons
+                        </a>
+                        <a href="eventos/index.html" class="btn btn-secondary">
+                            <i class="fas fa-calendar-alt"></i> Próximos Eventos
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -51,21 +560,26 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Blazium Club</h3>
-                    <p>La mejor plataforma de contenido para Minecraft Bedrock</p>
+                    <p>La mejor plataforma de contenido para Minecraft Bedrock. Ofrecemos addons, mapas, eventos y comisiones personalizadas para transformar tu experiencia de juego.</p>
                 </div>
                 <div class="footer-section">
                     <h3>Contacto</h3>
                     <ul>
-                        <li><i class="fas fa-envelope"></i> contacto@blaziumclub.com</li>
-                        <li><i class="fab fa-discord"></i> discord.gg/blazium</li>
+                        <li>
+                            <i class="fas fa-envelope"></i> contacto@blaziumclub.com
+                        </li>
+                        <li>
+                            <i class="fab fa-discord"></i> discord.gg/blazium
+                        </li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h3>Síguenos</h3>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
             </div>
@@ -75,6 +589,80 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Menú hamburguesa para móviles
+            const hamburger = document.querySelector('.hamburger');
+            const nav = document.querySelector('.main-nav');
+            
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                nav.classList.toggle('active');
+                
+                // Desplazar al inicio cuando se abre el menú en móviles
+                if (nav.classList.contains('active') && window.innerWidth <= 768) {
+                    window.scrollTo(0, 0);
+                }
+            });
+            
+            // Cerrar menú al hacer clic en un enlace (para móviles)
+            const navLinks = document.querySelectorAll('.main-nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 768) {
+                        hamburger.classList.remove('active');
+                        nav.classList.remove('active');
+                    }
+                });
+            });
+            
+            // Efecto de scroll suave para todos los enlaces
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Efecto de aparición suave al hacer scroll
+            const fadeElements = document.querySelectorAll('.hero h2, .hero-content, .cta-buttons');
+            
+            function checkFade() {
+                fadeElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            }
+            
+            // Aplicar estilos iniciales
+            fadeElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            });
+            
+            // Verificar al cargar y al hacer scroll
+            window.addEventListener('load', checkFade);
+            window.addEventListener('scroll', checkFade);
+            
+            // Verificar inmediatamente (por si el elemento ya está visible)
+            checkFade();
+        });
+    </script>
 </body>
 </html>
