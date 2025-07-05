@@ -579,10 +579,7 @@
                     <!-- Addon 1: Blazium Counter -->
                     <div class="addon-card" data-addon="blazium-counter">
                         <div class="addon-image">
-                            <div style="width:100%;height:100%;background:linear-gradient(135deg, #1a4b8c, #4fc3f7);display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;text-align:center;padding:20px;">
-                                <i class="fas fa-sort-numeric-down" style="font-size:3rem;margin-bottom:15px;"></i>
-                                <h3 style="position:absolute;bottom:10px;width:100%;text-align:center;font-weight:bold;">Blazium Counter</h3>
-                            </div>
+                            <img src="counter.png" alt="Blazium Counter">
                         </div>
                         <div class="addon-content">
                             <h3 class="addon-title">Blazium Counter</h3>
@@ -594,10 +591,7 @@
                     <!-- Addon 2: Ruleta Desafío 3 -->
                     <div class="addon-card" data-addon="ruleta-desafio-3">
                         <div class="addon-image">
-                            <div style="width:100%;height:100%;background:linear-gradient(135deg, #8e44ad, #e74c3c);display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;text-align:center;padding:20px;">
-                                <i class="fas fa-dice" style="font-size:3rem;margin-bottom:15px;"></i>
-                                <h3 style="position:absolute;bottom:10px;width:100%;text-align:center;font-weight:bold;">Ruleta Desafío 3</h3>
-                            </div>
+                            <img src="ruleta.png" alt="Ruleta Desafío 3">
                         </div>
                         <div class="addon-content">
                             <h3 class="addon-title">Ruleta Desafío 3</h3>
@@ -609,10 +603,7 @@
                     <!-- Addon 3: Muerte Squid Craft Games 2 -->
                     <div class="addon-card" data-addon="muerte-squid-craft">
                         <div class="addon-image">
-                            <div style="width:100%;height:100%;background:linear-gradient(135deg, #c0392b, #f39c12);display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem;text-align:center;padding:20px;">
-                                <i class="fas fa-skull" style="font-size:3rem;margin-bottom:15px;"></i>
-                                <h3 style="position:absolute;bottom:10px;width:100%;text-align:center;font-weight:bold;">Muerte Squid Craft</h3>
-                            </div>
+                            <img src="game_over.png" alt="Muerte Squid Craft Games 2">
                         </div>
                         <div class="addon-content">
                             <h3 class="addon-title">Muerte Squid Craft Games 2</h3>
@@ -637,9 +628,7 @@
             
             <div class="modal-body">
                 <div class="modal-image">
-                    <div id="modal-image" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, #1a4b8c, #4fc3f7);">
-                        <i class="fas fa-sort-numeric-down" style="font-size:5rem;color:white;"></i>
-                    </div>
+                    <img id="modal-image" src="counter.png" alt="Addon Image">
                 </div>
                 
                 <div class="modal-info">
@@ -750,11 +739,10 @@
                     "Efectos visuales y sonoros personalizables",
                     "Fácil instalación y configuración"
                 ],
-                mcaddon: "blazium_counter.mcaddon",
-                zip: "blazium_counter.zip",
-                tutorial: "https://www.youtube.com/watch?v=nVPPl3YStvI",
-                color: "linear-gradient(135deg, #1a4b8c, #4fc3f7)",
-                icon: "fas fa-sort-numeric-down"
+                image: "counter.png",
+                mcaddon: "Counter.mcaddon",
+                zip: "counter.zip",
+                tutorial: "https://www.youtube.com/watch?v=nVPPl3YStvI"
             },
             "ruleta-desafio-3": {
                 title: "Ruleta Desafío 3",
@@ -768,11 +756,10 @@
                     "Desafíos preconfigurados incluidos",
                     "Fácil integración con otros addons"
                 ],
-                mcaddon: "ruleta_desafio_3.mcaddon",
-                zip: "ruleta_desafio_3.zip",
-                tutorial: "https://youtu.be/W7PjF6GfVmc?si=1PYvnK6vynXdVqM4",
-                color: "linear-gradient(135deg, #8e44ad, #e74c3c)",
-                icon: "fas fa-dice"
+                image: "ruleta.png",
+                mcaddon: "Ruleta.mcaddon",
+                zip: "ruleta.zip",
+                tutorial: "https://youtu.be/W7PjF6GfVmc?si=1PYvnK6vynXdVqM4"
             },
             "muerte-squid-craft": {
                 title: "Muerte Squid Craft Games 2",
@@ -786,11 +773,10 @@
                     "Compatible con servidores y mundos individuales",
                     "Fácil activación/desactivación"
                 ],
-                mcaddon: "muerte_squid_craft.mcaddon",
-                zip: "muerte_squid_craft.zip",
-                tutorial: "https://youtu.be/qt_v4JitJBk?si=cX_Fntdw1umT4Yo8",
-                color: "linear-gradient(135deg, #c0392b, #f39c12)",
-                icon: "fas fa-skull"
+                image: "game_over.png",
+                mcaddon: "sqb.mcaddon",
+                zip: "sqb.zip",
+                tutorial: "https://youtu.be/qt_v4JitJBk?si=cX_Fntdw1umT4Yo8"
             }
         };
 
@@ -813,10 +799,7 @@
                         document.getElementById('modal-title').textContent = addonData.title;
                         document.getElementById('modal-subtitle').textContent = addonData.subtitle;
                         document.getElementById('modal-description').textContent = addonData.description;
-                        
-                        // Actualizar imagen del modal
-                        const modalImage = document.querySelector('.modal-image');
-                        modalImage.innerHTML = `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:${addonData.color};"><i class="${addonData.icon}" style="font-size:5rem;color:white;"></i></div>`;
+                        document.getElementById('modal-image').src = addonData.image;
                         
                         // Actualizar características
                         const featuresList = document.getElementById('modal-features');
