@@ -1,83 +1,280 @@
+/* Variables de color */
 :root {
-  --color-bg: #f9f9f7;
-  --color-text: #1a1a1a;
-  --font-main: 'Helvetica Neue', sans-serif;
+    --primary-dark: #0a192f;
+    --primary-blue: #1a4b8c;
+    --accent-blue: #64ffda;
+    --text-light: #ccd6f6;
+    --text-gray: #8892b0;
+    --bg-dark: #020c1b;
+    --bg-gradient: linear-gradient(135deg, #0a192f 0%, #020c1b 100%);
 }
 
-/* Reset básico */
+/* Reset y estilos base */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom, #0f0f0f, #1c1c1c);
-  color: #e0e0e0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+    font-family: 'Rubik', 'Segoe UI', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    background-image: var(--bg-gradient);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Barra superior (navegación) */
-header {
-  background-color: #0a1f33;
-  padding: 1em 2em;
-  border-bottom: 2px solid #1a3a5f;
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 2em;
+/* Header */
+.main-header {
+    background-color: var(--primary-dark);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-nav a {
-  color: #e0e0e0;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s;
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
 }
 
-nav a:hover {
-  color: #66ccff;
+.logo h1 {
+    color: var(--text-light);
+    font-size: 1.8rem;
+    font-weight: 700;
 }
 
-/* Contenido principal */
-main {
-  flex: 1;
-  text-align: center;
-  padding: 5em 2em;
-  background: linear-gradient(to bottom, #1c1c1c, #0f0f0f);
+.logo h1 span {
+    color: var(--accent-blue);
 }
 
-main h1 {
-  font-size: 3em;
-  color: #ffffff;
-  margin-bottom: 1em;
+.main-nav ul {
+    display: flex;
+    list-style: none;
 }
 
-main p {
-  font-size: 1.2em;
-  color: #cccccc;
+.main-nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    margin: 0 0.2rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-radius: 4px;
 }
 
-/* Barra inferior (footer / contacto) */
-footer {
-  background-color: #0a1f33;
-  color: #cccccc;
-  text-align: center;
-  padding: 1em;
-  border-top: 2px solid #1a3a5f;
+.main-nav a:hover {
+    color: var(--accent-blue);
+    background-color: rgba(100, 255, 218, 0.1);
 }
 
-footer a {
-  color: #66ccff;
-  text-decoration: none;
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
 }
 
-footer a:hover {
-  text-decoration: underline;
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-light);
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+/* Hero Section */
+.hero {
+    padding: 150px 0 80px;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent-blue);
+    font-weight: 700;
+}
+
+.hero p {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    color: var(--text-gray);
+    font-size: 1.1rem;
+}
+
+/* Botones */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin: 0 10px;
+}
+
+.btn-primary {
+    background-color: var(--accent-blue);
+    color: var(--primary-dark);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(100, 255, 218, 0.3);
+}
+
+.btn-secondary {
+    border: 1px solid var(--accent-blue);
+    color: var(--accent-blue);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(100, 255, 218, 0.1);
+    transform: translateY(-3px);
+}
+
+/* Footer */
+.main-footer {
+    background-color: var(--primary-dark);
+    padding: 50px 0 20px;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.footer-section h3 {
+    color: var(--accent-blue);
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.footer-section ul li i {
+    margin-right: 10px;
+    color: var(--accent-blue);
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    color: var(--text-light);
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--accent-blue);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-gray);
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-nav {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background-color: var(--primary-dark);
+        transition: all 0.5s ease;
+    }
+
+    .main-nav.active {
+        left: 0;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .main-nav a {
+        display: block;
+        padding: 15px;
+        margin: 5px 0;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+
+    .hero {
+        padding: 120px 0 60px;
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .cta-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .btn {
+        margin: 0;
+    }
+}
+
+/* Efectos y animaciones */
+a, button {
+    transition: all 0.3s ease;
+}
+
+/* Efecto de brillo al pasar el mouse */
+.main-nav a:hover, .btn:hover {
+    filter: brightness(1.1);
 }
